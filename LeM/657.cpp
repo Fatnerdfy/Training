@@ -22,3 +22,5 @@ bool judgeCircle(string moves) {
     if(!r && !u) return true;
     else return false;
 }
+
+// runtime 19ms
