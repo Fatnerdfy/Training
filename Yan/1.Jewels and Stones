@@ -2,8 +2,10 @@ class Solution {
 public:
     int numJewelsInStones(string J, string S) {
         int count = 0;	//用来计数
-        for(int i = 0; i<S.length(); i++){	//Stones串作为第一个循环
-            for(int j = 0; j<J.length(); j++){	//Jewels串作为第二个循环
+		int lenS = S.length();
+		int lenJ = J.length();
+        for(int i = 0; i<lenS; i++){	//Stones串作为第一个循环
+            for(int j = 0; j<lenJ; j++){	//Jewels串作为第二个循环
                 if(S[i] == J[j]){
                     count++;
                     break;	//找到相同立刻break，否则重复计数
