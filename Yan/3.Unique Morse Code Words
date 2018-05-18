@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string code[26] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+    int uniqueMorseRepresentations(vector<string>& words) {
+        if(words.size() == 0)
+            return 0;
+        vector<string> mos;
+        int lenw = words.size();
+        string temp;
+        bool flag = false;
+        for(int i = 0; i<lenw; i++){
+            for(int j = 0; j<words[i].length(); j++){
+                temp += code[words[i][j] - 'a'];
+            }
+            
+            for(int j = 0; j<mos.size(); j++){
+                if(mos[j] == temp){
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag == false){
+                mos.push_back(temp);
+            }
+            flag = false;
+            temp = "";
+        }
+
+        return mos.size();
+    }
+
+    
+};
+
+//runtime:6ms
+//beats 99.70% cpp submissions
