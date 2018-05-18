@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+        int r = A.size();
+        int c = A[0].size();
+        for(int i = 0; i<r; i++){
+            reverse(A[i].begin(), A[i].end()); #先翻转vector
+            for(int j = 0; j<c; j++){
+                A[i][j] = !A[i][j]; #对每个元素取反
+            }
+        }
+        return A;
+    }
+};
+
+//runtime: 15ms
+//not enough data for the distribution
