@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> shortestToChar(string S, char C) {
+        vector<int>t,v;
+        int min = 10000;
+        for(int i = 0; i<S.length(); i++){
+            if(S[i] == C){
+                v.push_back(i);
+            }
+        }
+        for(int i = 0; i<S.length(); i++){
+            for(int j = 0; j<v.size(); j++){
+                if(min > abs(v[j] - i)){
+                    min = abs(v[j] - i);
+                }
+                   
+            }
+            t.push_back(min);
+            min = 10000;
+        }
+        return t;
+}
+};
+
+//runtime:15ms
+//no enough data

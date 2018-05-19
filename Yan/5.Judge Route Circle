@@ -1,0 +1,11 @@
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        int t[200] = {0};
+        for(auto &a : moves) t[a]++;
+        return (t['U']==t['D'])&&(t['L']==t['R']);
+    }
+};
+
+//runtime:18ms
+//97.27%

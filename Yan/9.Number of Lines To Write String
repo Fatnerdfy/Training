@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> numberOfLines(vector<int>& widths, string S) {
+        int lines = 1, temp = 0;
+        vector<int> v;
+        for(int i = 0; i<S.length(); i++){
+            temp += widths[S[i] - 'a'];
+            if(temp > 100){
+                temp = widths[S[i] - 'a'];
+                lines++;
+            }
+        }
+        v.push_back(lines);
+        v.push_back(temp);
+        return v;
+    }
+};
+
+//runtime:3ms
+//97.19%
