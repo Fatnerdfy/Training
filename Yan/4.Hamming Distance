@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int count = 0;
+	    int xy = x^y;
+        while(xy!=0){
+            if(xy&1){
+                count++;
+            }
+            xy = xy>>1;
+        }
+        return count;
+    }
+};
+
+//runtime:6ms
+//72.58%

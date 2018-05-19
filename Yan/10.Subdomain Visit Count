@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> subdomainVisits(vector<string>& cpdomains) {
+        unordered_map<string, int>map;
+        vector<string> d;
+
+        int num = 0, i = 0;
+        for(auto domain : cpdomains){
+            i = domain.find(" ");
+            num = stoi(domain.substr(0, i));
+            domain = domain.substr(i+1);
+            map[domain] += num;
+            domain = domain.substr(domain.find(".")+1);
+            map[domain] += num;
+            if(domain.find(".") != -1){
+                domain = domain.substr(domain.find(".")+1);
+                map[domain] += num;
+            }
+        }
+        for(auto m : map)
+        {
+            d.push_back(to_string(m.second)+" "+m.first);
+        }
+        return d;
+
+    }
+};
+
+//runtime:19ms
+//46.22%
