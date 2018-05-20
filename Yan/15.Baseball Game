@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        vector<int>rp;
+        rp.push_back(0);
+        for(int i = 0; i< ops.size(); i++){
+            if(ops[i] == "C"){
+                rp.pop_back();
+            }else if(ops[i] == "D"){
+                rp.push_back(rp[rp.size()-1]*2);
+            }else if(ops[i] == "+"){
+                rp.push_back(rp[rp.size()-1] + rp[rp.size()-2]);
+            }else{
+                rp.push_back(stoi(ops[i]));
+            }
+            
+                
+        }
+
+        return accumulate(rp.begin(),rp.end(),0);
+    }
+};
+
+// 6ms
+// 98.60%

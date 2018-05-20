@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+ 
+        string s1;
+        int index = 0;
+        while(s.find(" ")!=-1){
+            index = s.find(" ");
+            for(int i = index-1; i>=0; i--){
+                s1 += s[i];
+            }
+            s1 += " ";
+            s = s.substr(index+1);
+        }
+        for(int i = s.length()-1; i>=0; i--){
+            s1 += s[i];
+        }
+        return s1;
+    }
+};
+
+//31ms
+//21.76%

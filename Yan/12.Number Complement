@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        num = ~num; //位取反
+        int count = 0; //计算左移次数
+        while(num < 0){ //因为要求no leading 0，所以取后前面的数一定是1，找到第一个不是1的时候，就是num>=0的时候
+            count++;
+            num = num<<1; 
+        }
+        for(int i = 0; i<count; i++)
+            num = num>>1;
+        return num;
+    }
+};
