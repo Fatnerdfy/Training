@@ -1,0 +1,33 @@
+package leetcode;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class maxDepth {
+	public class TreeNode{
+		int val;
+		TreeNode left;
+		TreeNode right;
+		TreeNode(int x) { val = x; }
+	}
+	public int maxdepth(TreeNode root) {
+		int max=0;
+		Queue<TreeNode> temp = new LinkedList<>();
+		temp.offer(root);
+		if(root == null)
+			return 0;
+		while(!temp.isEmpty()) {
+			max++;
+			int i;
+			int n = temp.size();
+			for(i=0;i<n;i++){
+				TreeNode t = temp.poll();
+				if(t.left!=null)
+					temp.offer(t.left);
+				if(t.right!=null)
+					temp.offer(t.right);
+			}
+		}
+		return max;
+	}
+}
+
