@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int distributeCandies(vector<int>& candies) {
+        int num = candies.size();
+        int candy[200001] = {0};
+        int kind = 0;
+        for(int i = 0; i<num; i++){
+            candy[candies[i]+100000] = 1;
+        }
+        for(int i = 0; i<200001; i++){
+            kind += candy[i];
+        }
+        return num/2>kind?kind:num/2;
+    }
+};
+
+//241ms
+//90.85%
