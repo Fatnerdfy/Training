@@ -1,0 +1,48 @@
+class Solution {
+public:
+    string toGoatLatin(string S) {
+        string newS;
+    string vowel = "aeiouAEIOU";
+    int i = 0;
+	int count = 1;
+	while(S.find(" ") != -1){
+		if(vowel.find(S[i]) == -1){
+            newS += S.substr(i+1, S.find(" ")-1);
+            newS += S[i];
+			newS += "ma";
+            for(int j = 0; j<count; j++){
+                newS += "a";
+            }
+            newS += " ";
+        }else{
+            newS += S.substr(i, S.find(" "));
+            newS += "ma";
+                for(int j = 0; j<count; j++){
+                newS += "a";
+            }
+            newS += " ";
+        }
+		S = S.substr(S.find(" ")+1);
+		count++;
+	}
+    
+    if(vowel.find(S[i]) == -1){
+            newS += S.substr(i+1, S.find(" "));
+            newS += S[i];
+			newS += "ma";
+            for(int j = 0; j<count; j++){
+                newS += "a";
+            }
+        }else{
+            newS += S.substr(i, S.find(" "));
+            newS += "ma";
+                for(int j = 0; j<count; j++){
+                newS += "a";
+            }
+        }
+        return newS;
+    }
+};
+
+//5ms
+//no enough data

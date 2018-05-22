@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int M = matrix.size();
+        int N = matrix[0].size();
+        int j,k;
+        int index = 0;
+        for(int i = 0; i<M+N-1; i++){
+            for((N-1-i>=0)?(j = 0, k = N-1-i):(j = i+1-N, k = 0), index = matrix[j][k]; j<M&&k<N; j++, k++){
+                if(index != matrix[j][k])
+                    return false;
+            }
+        }
+        return true;
+    }
+};
+
+//22ms
+//55.31%

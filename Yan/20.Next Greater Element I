@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
+        for(int i = 0; i<findNums.size(); i++){
+            int flag = false;
+            for(vector<int>::iterator j = find(nums.begin(), nums.end(), findNums[i]); j<nums.end(); j++){
+                if(*j>findNums[i]){
+                    findNums[i] = *j;
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag)
+                findNums[i] = -1;
+        }
+        return findNums;
+    }
+};
+
+//13ms
+//45.84%
