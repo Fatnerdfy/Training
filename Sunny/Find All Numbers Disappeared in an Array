@@ -1,0 +1,19 @@
+package leetcode;
+
+import java.util.*;
+
+public class findDisappeared {
+	 public List<Integer> findDisappearedNumbers(int[] nums) {
+	        List<Integer> result = new ArrayList<Integer>();
+	        int n = nums.length;
+	        int[] temp = new int[n];
+	        int i = 0;
+	        Arrays.fill(temp,-1);
+	        for(i=0;i<n;i++)
+	        	temp[nums[i]-1]=nums[i];
+	        for(i =0;i<n;i++)
+	        	if(temp[i] == -1)
+	        		result.add(i+1);
+	        return result;
+	    }
+}
