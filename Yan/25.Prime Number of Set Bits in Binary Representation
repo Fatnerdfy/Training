@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countPrimeSetBits(int L, int R) {
+        bool prime[20] = {false, false, true, true, false, true, false, true, false, false, false, true, false, true, false, false, false, true, false, true};
+        int count = 0;
+        for(int i = L; i < R+1; i++)
+        {
+            bitset<20> b(i);
+            if(prime[b.count()])
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+};
+
+//9ms
+//98.99%
