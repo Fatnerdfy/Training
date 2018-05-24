@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<string> letterCasePermutation(string S) {
+        vector<string> res;
+        stringPermutation(res, 0, S);
+        return res;
+    }
+    void stringPermutation(vector<string> &res, int pos, string S)
+    {
+        if(pos == S.length())
+        {
+            res.push_back(S);
+        }else
+        {
+            if(S[pos] < 65)
+            {
+                stringPermutation(res, pos+1, S);
+            }
+            else if(S[pos]<97)
+            {
+                stringPermutation(res, pos+1, S);
+                S[pos] += 32;
+                stringPermutation(res, pos+1, S);
+            }else
+            {
+                stringPermutation(res, pos+1, S);
+                S[pos] -= 32;
+                stringPermutation(res, pos+1, S);
+            }
+        }
+        
+    }
+};
+
+//7ms
+//93.97%
