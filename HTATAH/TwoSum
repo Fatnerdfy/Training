@@ -1,0 +1,26 @@
+//Can find all the combination whose sum is target.
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        List<Integer> numsList = new ArrayList<Integer>();
+        List<Integer> sumList = new ArrayList<Integer>();
+        for(int i = 0; i < nums.length; i++){
+        	numsList.add(nums[i]);
+        }
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+        for(int i = 0; i < numsList.size(); i++){
+        	if(!map.containsKey(target - numsList.get(i))){
+        		map.put(numsList.get(i), i);
+        	}else{
+        		sumList.add(map.get(target - numsList.get(i)));
+        		sumList.add(i);
+        	}
+        }
+        int[] twoSum = new int[sumList.size()];
+        for(int i = 0; i < sumList.size(); i++){
+        	twoSum[i] = sumList.get(i);
+        }
+        return twoSum;
+    
+    }
+}
