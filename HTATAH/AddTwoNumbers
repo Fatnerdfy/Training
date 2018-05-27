@@ -1,0 +1,46 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    	List<ListNode> list1 = new LinkedList<ListNode>();
+    	List<ListNode> list2 = new LinkedList<ListNode>();
+    	List<ListNode> list3 = new LinkedList<ListNode>();
+    	int carry = 0;
+    	int truncation = 0;
+    	int sum = 0;
+    	while(l1 != null) {
+    		list1.add(l1);
+    		l1 = l1.next;
+    	}
+    	while(l2 != null) {
+    		list2.add(l2);
+    		l2 = l2.next;
+    	}
+    	for(int i = 0; i < list1.size() || i < list2.size(); i++) {
+    		int num1 = i < list1.size() ? list1.get(i).val : 0;
+    		int num2 = i < list2.size() ? list2.get(i).val : 0;
+    		sum = num1 + num2 + carry;
+    		if(sum >= 10) {
+    			carry = sum / 10;
+    			truncation = sum % 10;
+    		}else {
+    			carry = 0;
+    			truncation = sum;
+    		}
+    		list3.add(new ListNode(truncation));
+    	}
+    	if(carry != 0) {
+    		list3.add(new ListNode(carry));
+    	}
+    	 for(int i = 0; i < list3.size() - 1; i++) {
+         	list3.get(i).next = list3.get(i+1);
+         }
+    	return list3.get(0);  
+    }
+}
