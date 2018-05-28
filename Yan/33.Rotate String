@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool rotateString(string A, string B) {
+        if(A == B)
+        {
+            return true;
+        }
+        string temp;
+        for(int i = 0; i < A.length(); i++)
+        {
+            temp = A.substr(1);
+            temp += A[0];
+            A = temp;
+            if(A == B)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+};
