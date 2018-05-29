@@ -1,0 +1,41 @@
+class Solution {  
+public:  
+    bool isValid(string s) {  
+        int len = s.length();  
+        if( 0 == len) 
+            return true;  
+        stack<char> room;  
+       
+        for(int i = 0; i < len; ++i)  
+        {  
+            switch(s[i])  
+            {  
+            case '(':  
+                room.push(s[i]);  
+                break;  
+            case ')':  
+                if(room.empty() || room.top() != '(')  
+                    return false;  
+                room.pop();  
+                break;  
+            case '[':  
+                room.push(s[i]);  
+                break;  
+            case ']':  
+                if(room.empty() || room.top() != '[')  
+                    return false;  
+                room.pop();  
+                break;  
+            case '{':  
+                room.push(s[i]);  
+                break;  
+            case '}':  
+                if(room.empty() || room.top() != '{')  
+                    return false;  
+                room.pop();  
+                break;  
+            }  
+        }  
+        return room.empty();  
+    }  
+};  

@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int countBinarySubstrings(string s) {
+        int count = 0;
+        int temp;
+        int temp2;
+        int res = 0;
+        for(int i = 1; i < s.length(); i++)
+        {
+            count = 1;
+            while(s[i] == s[i-1] && i != s.length()) 
+            {
+                count++;
+                i++;
+            }
+            temp = i;
+            while(s[i-1] != s[temp] && temp != s.length() && count > 0)
+            {
+                count--;
+                res++;
+                temp++;
+            }
+
+            
+
+        }
+        return res;
+    }
+};
