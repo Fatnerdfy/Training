@@ -1,0 +1,50 @@
+class Solution {
+        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+            
+		double median = 0;
+		List<Integer> list = new ArrayList<Integer>();
+		int sum = nums1.length + nums2.length;
+		int quotient = sum / 2;
+		int remainder = sum % 2;
+		int firstIndex = 0;
+		int lastIndex = 0;
+		int i;
+		int j;
+		if(remainder == 0) {
+			lastIndex = quotient;
+			firstIndex = quotient - 1;
+		}else {
+			lastIndex = quotient;
+			firstIndex = quotient;
+		}
+		for(i = 0, j = 0; i < nums1.length && j < nums2.length;) {
+			if(nums1[i] < nums2[j]) {
+				list.add(nums1[i++]);
+			}else {
+				list.add(nums2[j++]);
+			}
+			if(lastIndex == list.size() - 1) {
+				return (list.get(lastIndex) + list.get(firstIndex))/2.0;
+			}
+		}
+		if(i == nums1.length) {
+			while(j < nums2.length) {
+				list.add(nums2[j++]);
+				if(lastIndex == list.size() - 1) {
+					return (list.get(lastIndex) + list.get(firstIndex))/2.0;
+				}
+			}
+		}
+		if(j == nums2.length) {
+			while(i < nums1.length) {
+				list.add(nums1[i++]);
+				if(lastIndex == list.size() - 1) {
+					return (list.get(lastIndex) + list.get(firstIndex))/2.0;
+				}
+			}
+		}
+		return 0;
+	
+        
+    }
+}

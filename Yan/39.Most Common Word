@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        unordered_map<string, int> m;
+        int maxv = 0;
+        string maxw;
+        string word;
+        for(int i = 0; i < paragraph.length(); i++)
+        {
+            if(paragraph[i] > 96 && paragraph[i] < 123)
+            {
+                word += paragraph[i];
+            }else if(paragraph[i] > 64 && paragraph[i] < 91)
+            {
+                word += paragraph[i]+32;
+            }else
+            {
+                if(word != "")
+                {
+                    m[word]++;
+                    word = "";
+                }
+            }
+        }
+        if(word != "")
+        {
+            m[word]++;
+        }
+        for(int i = 0; i < banned.size(); i++)
+        {
+            m[banned[i]] = 0;
+        }
+        for( unordered_map<string, int>::iterator iter=m.begin();iter!=m.end();iter++ ){
+        {
+            if(iter -> second > maxv)
+            {
+                maxv = iter -> second;
+                maxw = iter -> first;
+            }
+        }
+    }
+        return maxw;
+    }
+};
+
+// 6ms
+// no enough data
