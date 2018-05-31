@@ -7,6 +7,25 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+class Solution {
+public:
+    void preorder(TreeNode *p, vector<int>& result) {
+        if(p == nullptr) return;
+        result.push_back(p->val);
+        preorder(p->left, result);
+        preorder(p->right, result);
+    }
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        preorder(root, result);
+        return result;
+    }
+};
+
+//runtime 4ms
+
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
