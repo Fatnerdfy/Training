@@ -1,0 +1,62 @@
+class Solution {
+    public int reverse(int x) {
+		String string = String.valueOf(x);
+		String reverseString = new StringBuffer(string).reverse().toString();
+		if(reverseString.charAt(0) == '0' && reverseString.length() > 1) {
+			reverseString = reverseString.substring(1, reverseString.length());
+		}
+		if(reverseString.charAt(reverseString.length() - 1) == '-'){
+			reverseString = reverseString.substring(0, reverseString.length() - 1);
+			if(isOverFlowNegative(reverseString)) {
+				return 0;
+			}
+			return 0 - Integer.parseInt(reverseString);
+		}else {
+			if(isOverFlowPositive(reverseString)) {
+				return 0;
+			}
+			return Integer.parseInt(reverseString);
+		}
+    }
+        private boolean isOverFlowPositive(String string) {
+
+		String max = String.valueOf(Integer.MAX_VALUE);
+		if(string.length() > max.length()) {
+			return true;
+		}
+		if(string.length() < max.length()) {
+			return false;
+		}
+		for(int i = 0; i < string.length(); i++) {
+			if(string.charAt(i) > max.charAt(i)) {
+				return true;
+			}else if(string.charAt(i) < max.charAt(i)) {
+				return false;
+			}
+		}
+		return false;
+	
+	}
+	
+	private boolean isOverFlowNegative(String string) {
+
+		String min = String.valueOf(Integer.MIN_VALUE);
+		min = min.substring(1);
+		if(string.length() > min.length()) {
+			System.out.println("length");
+			return true;
+		}
+		if(string.length() < min.length()) {
+			return false;
+		}
+		for(int i = 0; i < string.length(); i++) {
+			if(string.charAt(i) > min.charAt(i)) {
+				return true;
+			}else if(string.charAt(i) < min.charAt(i)) {
+				return false;
+			}
+		}
+		return false;
+	
+	}
+}
