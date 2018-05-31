@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<vector<int>> largeGroupPositions(string S) {
+        int count = 0;
+        vector<int> pos;
+        vector<vector<int>> res;
+        char c;
+        for(int i = 0; i < S.length(); i++)
+        {
+            if(c == S[i])
+            {
+                count++;
+            }else
+            {
+                if(count > 2)
+                {
+                    pos.push_back(i - count);
+                    pos.push_back(i - 1);
+                    res.push_back(pos);
+                    pos.clear();
+
+                }
+                count = 1;
+                c = S[i];
+            }
+            
+        }
+        
+        if(count > 2)
+        {
+            pos.push_back(S.length() - count);
+            pos.push_back(S.length() - 1);
+            res.push_back(pos);
+            pos.clear();
+
+        }
+        
+        return res;
+    }
+};
+
+//14ms
+//no enough data

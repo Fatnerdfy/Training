@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxCount(int m, int n, vector<vector<int>>& ops) {
+        if(ops.size() == 0)
+        {
+            return m*n;
+        }
+        int min_r = 40001;
+        int min_c = 40001;
+        for(int i = 0; i < ops.size(); i++)
+        {
+            if(min_r > ops[i][0])
+            {
+                min_r = ops[i][0];
+            }
+            if(min_c > ops[i][1])
+            {
+                min_c = ops[i][1];
+            }
+        }
+        return min_r * min_c;
+    }
+};
+// 9ms
+// 99.52%
