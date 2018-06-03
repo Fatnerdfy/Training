@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& nums) {
+        vector<string> res;
+        vector<int> copy = nums;
+        sort(copy.begin(), copy.end(), greater<int>());
+        for(int i = 0; i < nums.size(); i++)
+        {
+            for(int j = 0; j < copy.size(); j++)
+            {
+                if(copy[j] == nums[i])
+                {
+                    if(j == 0)
+                    {
+                        res.push_back("Gold Medal");
+                    }else if(j == 1)
+                    {
+                        res.push_back("Silver Medal");
+                    }else if(j == 2)
+                    {
+                        res.push_back("Bronze Medal");
+                    }else
+                    {
+                        ostringstream out;  
+                        out << j+1;
+                        res.push_back(out.str());
+                    }
+                }
+            }
+        }
+        return res;
+    }
+};
+
+//167ms
+//2.64%
