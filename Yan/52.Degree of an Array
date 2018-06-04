@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) 
+    {
+        unordered_map<int, int> m;
+        unordered_map<int, int> start;
+        unordered_map<int, int> end;
+        for(int i = 0; i < nums.size(); i++)
+        {
+            if(m[nums[i]] == 0)
+            {
+                m[nums[i]]++;
+                start[nums[i]] = i;
+                end[nums[i]] = i;
+            }else
+            {
+                m[nums[i]]++;
+                
+                end[nums[i]] = i;
+            }
+            
+        }
+        int max = 0;
+        int min = 50000;
+        for( unordered_map<int, int>::iterator iter=m.begin();iter!=m.end();iter++ )
+        {
+            if(iter -> second > max)
+            {
+                max = iter -> second;
+                min = end[iter -> first] - start[iter -> first] + 1;
+            }else if(iter -> second == max && end[iter -> first] - start[iter -> first] < min)
+            {
+                min = end[iter -> first] - start[iter -> first] + 1;
+            }
+        }
+        return min;
+        
+    }
+};
+
+//46ms
+//57.36%
