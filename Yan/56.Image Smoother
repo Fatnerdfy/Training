@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool isCorrect(int p, int q, int r, int c)
+    {
+        if(p >= 0 && p < r && q >= 0 && q < c)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+        
+    vector<vector<int>> imageSmoother(vector<vector<int>>& M) {
+        vector<vector<int>> smootherM;
+        int r = M.size();
+        int c = M[0].size();
+        for(int i = 0; i < r; i++)
+        {
+            vector<int>temp;
+            for(int j = 0; j < c; j++)
+            {
+                int count = 0;
+                int sum = 0;
+                for(int p = -1; p < 2; p++)
+                {
+                    for(int q = -1; q < 2; q++)
+                    {
+                        if(isCorrect(i+p, j+q, r, c))
+                        {
+                            sum += M[i+p][j+q];
+                            count++;
+                        }
+                    }
+                }
+                temp.push_back(sum/count);
+            }
+            smootherM.push_back(temp);
+        }
+        return smootherM;
+    }
