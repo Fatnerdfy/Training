@@ -1,0 +1,41 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        
+		TreeNode t3 = null;
+		TreeNode left1 = null;
+		TreeNode left2 = null;
+		TreeNode right1 = null;
+		TreeNode right2 = null;
+		if(t1 == null && t2 == null) {
+			return null;
+		}else if(t1 != null && t2 != null) {
+			t3 = new TreeNode(t1.val + t2.val);
+			left1 = t1.left;
+			right1 = t1.right;
+			left2 = t2.left;
+			right2 = t2.right;
+		}else if(t1 == null && t2 != null) {
+			t3 = new TreeNode(t2.val);
+			left2 = t2.left;
+			right2 = t2.right;
+		}else {
+			t3 = new TreeNode(t1.val);
+			left1 = t1.left;
+			right1 = t1.right;
+		}
+		t3.left = mergeTrees(left1 ,left2);
+		t3.right = mergeTrees(right1, right2);
+		return t3;
+	
+        
+    }
+}
