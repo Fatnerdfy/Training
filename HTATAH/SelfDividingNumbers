@@ -1,0 +1,25 @@
+class Solution {
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        
+		List<Integer> selfDividingNumbers = new ArrayList<Integer>();
+		for(int i = left; i <= right; i++) {
+			String string = String.valueOf(i);
+			boolean flag = true;
+			for(int j = 0; j < string.length(); j++) {
+				int number = Integer.parseInt(string.charAt(j) + "");
+				if(number == 0) {
+					flag = false;
+					break;
+				}
+				if(i % number != 0) {
+					flag = false;
+				}
+			}
+			if(flag) {
+				selfDividingNumbers.add(i);
+			}
+		}
+		return selfDividingNumbers;
+	
+    }
+}
