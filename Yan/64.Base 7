@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string convertToBase7(int num) {
+        string s;
+        int mod = 0;
+        if(num == 0)
+        {
+            return "0";
+        }else if(num > 0)
+        {
+            while(num != 0)
+            {
+                mod = num % 7;
+                num /= 7;
+                s += (48+mod);
+            }
+            reverse(s.begin(), s.end());
+        }else
+        {
+            s += "-";
+            num = -num;
+            while(num != 0)
+            {
+                mod = num % 7;
+                num /= 7;
+                s += (48+mod);
+            }
+            reverse(s.begin()+1, s.end());
+        }
+        
+        return s;
+    }
+};
+
+//6ms
+//95.03%
