@@ -1,0 +1,47 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        
+		
+		List<String> result = new ArrayList<String>();
+		Map<Integer, List<Character>> map = new HashMap<Integer, List<Character>>();
+		Character[] charArray1 = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'};
+		Character[] charArray2 = {'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'};
+		Character[] charArray3 = {'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+		List<Character> charList1 = Arrays.asList(charArray1);
+		List<Character> charList2 = Arrays.asList(charArray2);
+		List<Character> charList3 = Arrays.asList(charArray3);
+		for(String word : words) {
+			int first = 0, second = 0, third = 0;
+			for(int i = 0; i < word.length(); i++) {
+				char c = word.charAt(i);
+				if(c < 'a') {
+					c += 32;
+				}
+				if(charList1.contains(c)) {
+					first = 1;
+				}
+				if(charList2.contains(c)) {
+					second = 1;
+				}
+				if(charList3.contains(c)) {
+					third = 1;
+				}
+				if(first + second + third > 1) {
+					break;
+				}
+			}
+			if(first + second + third == 1) {
+				result.add(word);
+			}
+		}
+		String[] strings = new String[result.size()];
+		for(int i = 0; i < result.size(); i++) {
+			strings[i] = result.get(i);
+		}
+		return strings;
+    
+
+	
+        
+    }
+}
