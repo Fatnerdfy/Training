@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int findLengthOfLCIS(vector<int>& nums) {
+        if(nums.size() == 0)
+        {
+            return 0;
+        }
+        int res = 0;
+        int longestSize = 1;
+        for(int i = 1; i < nums.size(); i++)
+        {
+            if(nums[i] > nums[i-1])
+            {
+                longestSize++;
+            }else
+            {
+                if(longestSize > res)
+                {
+                    res = longestSize;
+                }
+                longestSize = 1;
+            }
+        }
+        if(longestSize > res)
+        {
+            return longestSize;
+        }else
+        {
+            return res;
+        }
+        
+    }
+};
+
+//15ms
+//97.26%
