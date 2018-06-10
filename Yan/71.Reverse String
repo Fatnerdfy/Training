@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string reverseString(string s) {
+        string _s;
+        int i,j=-1;
+        i=s.length();
+        while(i!=0)
+            _s+=s[--i];
+        
+        return _s;
+    }
+};
+
+//9ms
+//99.20%
