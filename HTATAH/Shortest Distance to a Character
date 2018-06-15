@@ -1,0 +1,24 @@
+class Solution {
+    public int[] shortestToChar(String S, char C) {
+        
+		List<Integer> indexes = new ArrayList<Integer>();
+		int[] distance = new int[S.length()];
+		for(int i = 0; i < S.length(); i++) {
+			char c = S.charAt(i);
+			if(c == C) {
+				indexes.add(i);
+			}
+		}
+		for(int i = 0; i < distance.length; i++) {
+			int min = Integer.MAX_VALUE;
+			for(int index : indexes) {
+				if(min > Math.abs(index - i)) {
+					min = Math.abs(index - i);
+				}
+			}
+			distance[i] = min;
+		}
+		return distance;
+	
+    }
+}
